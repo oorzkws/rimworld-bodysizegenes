@@ -18,7 +18,8 @@ public class HarmonyPatches
     {
         public static void Postfix(ref float __result, Pawn pawn)
         {
-            if (!ModsConfig.BiotechActive || !pawn.RaceProps.Humanlike) return;
+            // GetStatValue will access needs, which if null, will break loading /tableflip
+            if (!ModsConfig.BiotechActive || pawn?.RaceProps.Humanlike != true || pawn.needs == null) return;
             // Genes? Y/N
             var bodySizeMultiplier = StatDef.Named("bodySizeFactor");
             if (bodySizeMultiplier != null)
