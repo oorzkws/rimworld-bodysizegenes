@@ -20,9 +20,9 @@
 
     <GeneDef ParentName="GeneBodySizeBase">
         <defName>BodySizeBiggest</defName>
-        <label>giant</label>
+        <label>colossus</label>
         <description>Carriers of this gene grow to an astonishing size.</description>
-        <iconPath>UI/Icons/Genes/Gene_BodyHulk</iconPath>
+        <iconPath>GeneIcons/body-biggest</iconPath>
         <displayOrderInCategory>1050</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
         <biostatMet>-3</biostatMet>
@@ -33,9 +33,9 @@
 
     <GeneDef ParentName="GeneBodySizeBase">
         <defName>BodySizeBigger</defName>
-        <label>tower</label>
+        <label>giant</label>
         <description>Carriers of this gene stand head and shoulders above baseline humans.</description>
-        <iconPath>UI/Icons/Genes/Gene_BodyHulk</iconPath>
+        <iconPath>GeneIcons/body-bigger</iconPath>
         <displayOrderInCategory>1040</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
         <biostatMet>-2</biostatMet>
@@ -48,7 +48,7 @@
         <defName>BodySizeBig</defName>
         <label>alpha</label>
         <description>Carriers of this gene grow taller than most.</description>
-        <iconPath>UI/Icons/Genes/Gene_BodyStandard</iconPath>
+        <iconPath>GeneIcons/body-big</iconPath>
         <displayOrderInCategory>1030</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
         <biostatMet>1</biostatMet>
@@ -61,7 +61,7 @@
         <defName>BodySizeSmall</defName>
         <label>manlet</label>
         <description>Carriers of this gene end up shorter than most.</description>
-        <iconPath>UI/Icons/Genes/Gene_BodyStandard</iconPath>
+        <iconPath>GeneIcons/body-small</iconPath>
         <displayOrderInCategory>1020</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
         <biostatMet>1</biostatMet>
@@ -74,7 +74,7 @@
         <defName>BodySizeSmaller</defName>
         <label>dwarf</label>
         <description>Carriers of this gene end up very short in stature. There is no scientific proof this causes an affinity for alcohol or mining.</description>
-        <iconPath>UI/Icons/Genes/Gene_BodyThin</iconPath>
+        <iconPath>GeneIcons/body-smaller</iconPath>
         <displayOrderInCategory>1010</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
         <biostatMet>2</biostatMet>
@@ -87,7 +87,7 @@
         <defName>BodySizeSmallest</defName>
         <label>pixie</label>
         <description>Carriers of this gene rarely develop beyond what would be considered pocket-sized to a baseline human.</description>
-        <iconPath>UI/Icons/Genes/Gene_BodyThin</iconPath>
+        <iconPath>GeneIcons/body-smallest</iconPath>
         <displayOrderInCategory>1000</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
         <biostatMet>4</biostatMet>
