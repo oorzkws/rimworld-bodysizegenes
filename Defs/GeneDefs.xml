@@ -77,7 +77,7 @@
         <iconPath>GeneIcons/body-smaller</iconPath>
         <displayOrderInCategory>1010</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
-        <biostatMet>2</biostatMet>
+        <biostatMet>3</biostatMet>
         <statFactors>
             <bodySizeFactor>0.8</bodySizeFactor>
         </statFactors>        
@@ -90,7 +90,7 @@
         <iconPath>GeneIcons/body-smallest</iconPath>
         <displayOrderInCategory>1000</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
-        <biostatMet>4</biostatMet>
+        <biostatMet>5</biostatMet>
         <statFactors>
             <bodySizeFactor>0.7</bodySizeFactor>
         </statFactors>        
