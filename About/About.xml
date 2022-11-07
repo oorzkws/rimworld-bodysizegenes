@@ -1,0 +1,10 @@
+<ModMetaData>
+  <name>Body Size Genes</name>
+  <author>Mute</author>
+  <description>Lorem Ipsum</description>
+  <packageId>mute.genebodysize</packageId>
+  <url></url>
+  <supportedVersions>
+    <li>1.4</li>
+  </supportedVersions>
+</ModMetaData>
