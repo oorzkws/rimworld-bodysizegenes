@@ -1,8 +1,0 @@
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\1.4\Assemblies\genebodysize.dll
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.csproj.AssemblyReference.cache
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.GeneratedMSBuildEditorConfig.editorconfig
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.AssemblyInfoInputs.cache
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.AssemblyInfo.cs
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.csproj.CoreCompileInputs.cache
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.csproj.CopyComplete
-C:\Games\Steam\steamapps\common\RimWorld\Mods\Mute.Gene-BodySize\Source\genebodysize\obj\Debug\genebodysize.dll
