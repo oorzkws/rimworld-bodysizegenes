@@ -85,8 +85,8 @@
     
     <GeneDef ParentName="GeneBodySizeBase">
         <defName>BodySizeSmallest</defName>
-        <label>pixie</label>
-        <description>Carriers of this gene rarely develop beyond what would be considered pocket-sized to a baseline human.</description>
+        <label>pygmy</label>
+        <description>Carriers of this gene rarely develop beyond what would be considered toddler-sized to a baseline human.</description>
         <iconPath>GeneIcons/body-smallest</iconPath>
         <displayOrderInCategory>1000</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
