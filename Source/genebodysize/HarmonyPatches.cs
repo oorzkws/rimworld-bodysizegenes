@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using VariedBodySizes;
 using Verse;
+
 // ReSharper disable InconsistentNaming
 
 namespace genebodysize;
@@ -24,15 +22,9 @@ public class HarmonyPatches
             var bodySizeMultiplier = StatDef.Named("bodySizeFactor");
             if (bodySizeMultiplier != null)
                 __result *= pawn.GetStatValue(bodySizeMultiplier);
-
-            // Babies won't fit in cribs if body size exceeds 0.25
-            if (pawn.ageTracker.CurLifeStage.developmentalStage <= DevelopmentalStage.Baby)
-            {
-                __result = Mathf.Min(__result, 0.25f);
-            }
         }
     }
-    
+
     [HarmonyPatch]
     public static class VariedBodySizesModSettings_AffectMeleeDamagePatch
     {
@@ -50,9 +42,24 @@ public class HarmonyPatches
             __result.AffectRealHealthScale = true;
             __result.AffectMeleeDodgeChance = true;
             // Only override if default
-            if (!__result.VariedBodySizes.ContainsKey("Human") || __result.VariedBodySizes["Human"] == new FloatRange(0.9f, 1.1f))
+            if (!__result.VariedBodySizes.ContainsKey("Human") ||
+                __result.VariedBodySizes["Human"] == new FloatRange(0.9f, 1.1f))
                 __result.VariedBodySizes["Human"] = new FloatRange(0.95f, 1.05f);
         }
-        
+
+    }
+
+    [HarmonyAfter("Mlie.VariedBodySizes")]
+    [HarmonyPatch(typeof(Pawn), "BodySize", MethodType.Getter)]
+    public static class Pawn_BodySizePatch
+    {
+        public static void Postfix(ref float __result, Pawn __instance)
+        {
+            // Babies won't fit in cribs if body size exceeds 0.25
+            if (__instance.DevelopmentalStage == DevelopmentalStage.Baby)
+            {
+                __result = Mathf.Min(__result, 0.25f);
+            }
+        }
     }
 }
