@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -11,22 +12,8 @@ namespace genebodysize;
 
 public class HarmonyPatches
 {
-    [HarmonyPatch(typeof(VariedBodySizes_GameComponent), "GetVariedBodySize", MethodType.Normal)]
-    public static class VariedBodySizes_GameComponentPatch
-    {
-        public static void Postfix(ref float __result, Pawn pawn)
-        {
-            // GetStatValue will access needs, which if null, will break loading /tableflip
-            if (!ModsConfig.BiotechActive || pawn?.RaceProps.Humanlike != true || pawn.needs == null) return;
-            // Genes? Y/N
-            var bodySizeMultiplier = StatDef.Named("bodySizeFactor");
-            if (bodySizeMultiplier != null)
-                __result *= pawn.GetStatValue(bodySizeMultiplier);
-        }
-    }
-
     [HarmonyPatch]
-    public static class VariedBodySizesModSettings_AffectMeleeDamagePatch
+    public static class VariedBodySizesMod_SettingsPatch
     {
         // Since it's internal we need to do a bit of reflection
         static MethodBase TargetMethod()
@@ -48,18 +35,43 @@ public class HarmonyPatches
         }
 
     }
-
-    [HarmonyAfter("Mlie.VariedBodySizes")]
-    [HarmonyPatch(typeof(Pawn), "BodySize", MethodType.Getter)]
-    public static class Pawn_BodySizePatch
+    
+    [HarmonyPatch(typeof(VariedBodySizes_GameComponent), "OnCalculateBodySize")]
+    public static class Pawn_BodySizePatch_OnCalculateBodySizePatch
     {
-        public static void Postfix(ref float __result, Pawn __instance)
+        private static readonly TimedCache<float> statCache = new(360);
+        private static StatDef bodySizeMultiplier;
+        // Register a modifier for ez access
+        public static float Postfix(float result, float bodySize, Pawn pawn)
         {
-            // Babies won't fit in cribs if body size exceeds 0.25
-            if (__instance.DevelopmentalStage == DevelopmentalStage.Baby)
+            // GetStatValue will access needs, which if null, will break loading /tableflip
+            if (!ModsConfig.BiotechActive || pawn?.RaceProps.Humanlike != true || pawn.needs == null)
+                return result;
+            
+            // cached value, or calculate/cache/return
+            if (statCache.TryGet(pawn, out var pawnSize))
             {
-                __result = Mathf.Min(__result, 0.25f);
+                return pawnSize;
             }
+        
+            // Load-time fun!
+            bodySizeMultiplier ??= StatDef.Named("bodySizeFactor");
+
+            return statCache.SetAndReturn(pawn, result * pawn.GetStatValue(bodySizeMultiplier, cacheStaleAfterTicks: 3600));
+        }
+        
+    }
+    //[HarmonyPatch(typeof(VariedBodySizes_GameComponent), "GetVariedBodySize", MethodType.Normal)]
+    public static class VariedBodySizes_GameComponentPatch
+    {
+        public static void Postfix(ref float __result, Pawn pawn)
+        {
+            // GetStatValue will access needs, which if null, will break loading /tableflip
+            if (!ModsConfig.BiotechActive || pawn?.RaceProps.Humanlike != true || pawn.needs == null) return;
+            // Genes? Y/N
+            var bodySizeMultiplier = StatDef.Named("bodySizeFactor");
+            if (bodySizeMultiplier != null)
+                __result *= pawn.GetStatValue(bodySizeMultiplier);
         }
     }
 }
