@@ -25,4 +25,7 @@
         <displayName>Biotech</displayName>
     </li>
   </modDependencies>
+  <loadBefore>
+    <li>erdelf.humanoidalienraces</li>
+  </loadBefore>
 </ModMetaData>
