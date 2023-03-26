@@ -51,7 +51,7 @@
         <iconPath>GeneIcons/body-big</iconPath>
         <displayOrderInCategory>1030</displayOrderInCategory>
         <biostatCpx>1</biostatCpx>
-        <biostatMet>1</biostatMet>
+        <biostatMet>-1</biostatMet>
         <statFactors>
             <bodySizeFactor>1.1</bodySizeFactor>
         </statFactors>    
